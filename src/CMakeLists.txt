@@ -8,11 +8,9 @@ set(circle_src circle.cpp)
 set(tasks_src tasks.cpp)
 set(main_src main.cpp)
 
-# Создаём библиотеку
+# Создаём статическую библиотеку
 add_library(${PROJECT_NAME}_lib STATIC
-  ${circle_header}
   ${circle_src}
-  ${tasks_header}
   ${tasks_src})
 
 # Указываем директории для включения заголовочных файлов
