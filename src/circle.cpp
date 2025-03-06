@@ -1,9 +1,7 @@
-// Copyright 2022 UNN-CS
-#include <cstdint>
-#define _USE_MATH_DEFINES
-
+// Copyright 2023 Your Name
 #include "circle.h"
 
+#include <cstdint>
 #include <cmath>
 #include <cstdint>
 #include <stdexcept>

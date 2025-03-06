@@ -1,5 +1,6 @@
+// Copyright 2023 Your Name
+#ifndef INCLUDE_CIRCLE_H_
 #define INCLUDE_CIRCLE_H_
-#include <cstdint>
 
 class Circle {
  public:
@@ -24,4 +25,4 @@ class Circle {
   void calculateFromArea();
 };
 
-#endif // INCLUDE_CIRCLE_H_
+#endif  // INCLUDE_CIRCLE_H_
