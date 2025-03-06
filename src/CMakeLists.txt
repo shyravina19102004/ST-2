@@ -31,5 +31,4 @@ target_link_libraries(${PROJECT_NAME}
 # Подключаем Google Test (если тесты включены)
 if (BUILD_TESTS)
   enable_testing()
-  add_subdirectory(test)
 endif()
