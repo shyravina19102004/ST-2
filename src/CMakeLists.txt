@@ -1,21 +1,35 @@
-cmake_minimum_required(VERSION 3.10)
-project(CircleProject)
+# Устанавливаем пути к заголовочным файлам
+set(header_path "${${PROJECT_NAME}_SOURCE_DIR}/include")
+set(circle_header ${header_path}/circle.h)
+set(tasks_header ${header_path}/tasks.h)
 
-set(CMAKE_CXX_STANDARD 14)
+# Устанавливаем пути к исходным файлам
+set(circle_src circle.cpp)
+set(tasks_src tasks.cpp)
+set(main_src main.cpp)
 
-include_directories(include)
+# Создаём библиотеку (если она нужна)
+add_library(${PROJECT_NAME}_lib STATIC
+  ${circle_header}
+  ${circle_src}
+  ${tasks_header}
+  ${tasks_src})
 
-# Укажите все исходные файлы
-set(SOURCES
-    src/circle.cpp
-    src/main.cpp  # Используем main.cpp вместо tasks.cpp
-    test/tests.cpp
-)
+# Указываем директории для включения заголовочных файлов
+target_include_directories(${PROJECT_NAME}_lib
+  PUBLIC ${CMAKE_CURRENT_BINARY_DIR}
+         ${${PROJECT_NAME}_SOURCE_DIR}/include)
 
-# Создайте исполняемый файл
-add_executable(CircleProject ${SOURCES})
+# Создаём исполняемый файл для main.cpp
+add_executable(${PROJECT_NAME}
+  ${main_src})
 
-# Подключите Google Test
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
-target_link_libraries(CircleProject ${GTEST_LIBRARIES} pthread)
+# Связываем исполняемый файл с библиотекой
+target_link_libraries(${PROJECT_NAME}
+  PRIVATE ${PROJECT_NAME}_lib)
+
+# Подключаем Google Test (если тесты включены)
+if (BUILD_TESTS)
+  enable_testing()
+  add_subdirectory(test)
+endif()
