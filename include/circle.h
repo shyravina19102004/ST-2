@@ -3,26 +3,25 @@
 #define INCLUDE_CIRCLE_H_
 
 class Circle {
- public:
-  explicit Circle(double radius);
-
-#endif  // INCLUDE_CIRCLE_H_
-  void setRadius(double radius);
-  void setCircumference(double circumference);
-  void setArea(double area);
-
-  double getRadius() const;
-  double getCircumference() const;
-  double getArea() const;
-
  private:
-  double radius;
-  double circumference;
-  double area;
+    double radius;
+    double circumference;
+    double area;
 
-  void calculateFromRadius();
-  void calculateFromCircumference();
-  void calculateFromArea();
+    void calculateFromRadius();
+    void calculateFromCircumference();
+    void calculateFromArea();
+
+ public:
+    explicit Circle(double radius);
+
+    void setRadius(double radius);
+    void setCircumference(double circumference);
+    void setArea(double area);
+
+    double getRadius() const;
+    double getCircumference() const;
+    double getArea() const;
 };
 
 #endif  // INCLUDE_CIRCLE_H_
