@@ -1,17 +1,10 @@
-# Устанавливаем пути к исходным файлам тестов
-set(tests_src tests.cpp)
+add_executable(${PROJECT_NAME}.test
+  AllTests.cpp
+  tests.cpp)
+target_link_libraries(${PROJECT_NAME}.test
+  ${PROJECT_NAME} gtest pthread)
+target_compile_definitions(${PROJECT_NAME}.test 
+  PRIVATE TEST_DIR="${CMAKE_CURRENT_LIST_DIR}/test")
 
-# Подключаем Google Test
-find_package(GTest REQUIRED)
-
-# Создаём исполняемый файл для тестов
-add_executable(CircleProject_test
-  ${tests_src})
-
-# Связываем тесты с библиотекой и Google Test
-target_link_libraries(CircleProject_test
-  PRIVATE CircleProject_lib GTest::GTest GTest::Main)
-
-# Добавляем тесты в CTest
-add_test(NAME CircleProject_test
-  COMMAND CircleProject_test)
+install(TARGETS ${PROJECT_NAME}.test
+        DESTINATION "${tool_dest}")

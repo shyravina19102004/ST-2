@@ -1,27 +1,27 @@
-// Copyright 2022 UNN-CS
-#ifndef INCLUDE_CIRCLE_H_
 #define INCLUDE_CIRCLE_H_
+#include <cstdint>
 
 class Circle {
- private:
-    double radius;
-    double ference;
-    double area;
-
-    void updateFromRadius();
-    void updateFromFerence();
-    void updateFromArea();
-
  public:
-    explicit Circle(double r);
-
-    void setRadius(double r);
-    void setFerence(double f);
-    void setArea(double a);
-
-    double getRadius() const;
-    double getFerence() const;
-    double getArea() const;
-};
+  explicit Circle(double radius);
 
 #endif  // INCLUDE_CIRCLE_H_
+  void setRadius(double radius);
+  void setCircumference(double circumference);
+  void setArea(double area);
+
+  double getRadius() const;
+  double getCircumference() const;
+  double getArea() const;
+
+ private:
+  double radius;
+  double circumference;
+  double area;
+
+  void calculateFromRadius();
+  void calculateFromCircumference();
+  void calculateFromArea();
+};
+
+#endif // INCLUDE_CIRCLE_H_

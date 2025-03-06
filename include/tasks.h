@@ -2,7 +2,16 @@
 #ifndef INCLUDE_TASKS_H_
 #define INCLUDE_TASKS_H_
 
-double calculateEarthRopeGap();
-double calculatePoolCost();
+struct PoolResults {
+  double pathwayCost;
+  double fenceCost;
+  double totalCost;
+};
 
-#endif  // INCLUDE_TASKS_H_
+double calculateRopeGap(double earthRadius, double addedLength);
+
+PoolResults calculatePoolCosts(double poolRadius, double pathwayWidth,
+                               double pathwayCostPerSqMeter,
+                               double fenceCostPerMeter);
+
+#endif // INCLUDE_TASKS_H_

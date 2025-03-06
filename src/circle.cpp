@@ -1,49 +1,64 @@
-// Copyright 2023 Your Name
+// Copyright 2022 UNN-CS
+#include <cstdint>
+#define _USE_MATH_DEFINES
+
 #include "circle.h"
+
 #include <cmath>
+#include <cstdint>
+#include <stdexcept>
 
-Circle::Circle(double r) {
-    setRadius(r);
+Circle::Circle(double radius) : radius(radius) {
+  if (radius < 0) {
+    throw std::invalid_argument("Radius cannot be negative");
+  }
+  calculateFromRadius();
 }
 
-void Circle::setRadius(double r) {
-    radius = r;
-    updateFromRadius();
+void Circle::calculateFromRadius() {
+  circumference = 2 * M_PI * radius;
+  area = M_PI * radius * radius;
 }
 
-void Circle::setFerence(double f) {
-    ference = f;
-    updateFromFerence();
+void Circle::calculateFromCircumference() {
+  radius = circumference / (2 * M_PI);
+  area = M_PI * radius * radius;
 }
 
-void Circle::setArea(double a) {
-    area = a;
-    updateFromArea();
+void Circle::calculateFromArea() {
+  radius = std::sqrt(area / M_PI);
+  circumference = 2 * M_PI * radius;
 }
 
-double Circle::getRadius() const {
-    return radius;
+void Circle::setRadius(double radius) {
+  if (radius < 0) {
+    throw std::invalid_argument("Radius cannot be negative");
+  }
+
+  this->radius = radius;
+  calculateFromRadius();
 }
 
-double Circle::getFerence() const {
-    return ference;
+void Circle::setCircumference(double circumference) {
+  if (circumference < 0) {
+    throw std::invalid_argument("Circumference cannot be negative");
+  }
+
+  this->circumference = circumference;
+  calculateFromCircumference();
 }
 
-double Circle::getArea() const {
-    return area;
+void Circle::setArea(double area) {
+  if (area < 0) {
+    throw std::invalid_argument("Area cannot be negative");
+  }
+
+  this->area = area;
+  calculateFromArea();
 }
 
-void Circle::updateFromRadius() {
-    ference = 2 * M_PI * radius;
-    area = M_PI * radius * radius;
-}
+double Circle::getRadius() const { return radius; }
 
-void Circle::updateFromFerence() {
-    radius = ference / (2 * M_PI);
-    area = M_PI * radius * radius;
-}
+double Circle::getCircumference() const { return circumference; }
 
-void Circle::updateFromArea() {
-    radius = sqrt(area / M_PI);
-    ference = 2 * M_PI * radius;
-}
+double Circle::getArea() const { return area; }
