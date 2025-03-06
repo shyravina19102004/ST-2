@@ -5,13 +5,13 @@ set(tests_src tests.cpp)
 find_package(GTest REQUIRED)
 
 # Создаём исполняемый файл для тестов
-add_executable(${PROJECT_NAME}_test
+add_executable(CircleProject_test
   ${tests_src})
 
 # Связываем тесты с библиотекой и Google Test
-target_link_libraries(${PROJECT_NAME}_test
-  PRIVATE ${PROJECT_NAME}_lib GTest::GTest GTest::Main)
+target_link_libraries(CircleProject_test
+  PRIVATE CircleProject_lib GTest::GTest GTest::Main)
 
 # Добавляем тесты в CTest
-add_test(NAME ${PROJECT_NAME}_test
-  COMMAND ${PROJECT_NAME}_test)
+add_test(NAME CircleProject_test
+  COMMAND CircleProject_test)
