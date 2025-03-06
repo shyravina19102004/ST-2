@@ -8,7 +8,7 @@ set(circle_src circle.cpp)
 set(tasks_src tasks.cpp)
 set(main_src main.cpp)
 
-# Создаём библиотеку (если она нужна)
+# Создаём библиотеку
 add_library(${PROJECT_NAME}_lib STATIC
   ${circle_header}
   ${circle_src}
