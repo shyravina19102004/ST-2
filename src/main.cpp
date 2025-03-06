@@ -3,6 +3,7 @@
 #include "circle.h"
 #include "tasks.h"
 
+// Реализация функции calculateEarthRopeGap
 double calculateEarthRopeGap() {
     double earthRadius = 6378100;  // радиус Земли в метрах
     Circle earth(earthRadius);
@@ -14,6 +15,7 @@ double calculateEarthRopeGap() {
     return gap;
 }
 
+// Реализация функции calculatePoolCost
 double calculatePoolCost() {
     double poolRadius = 3;  // радиус бассейна в метрах
     double pathWidth = 1;  // ширина дорожки в метрах

@@ -5,13 +5,14 @@ set(tasks_header ${header_path}/tasks.h)
 
 # Устанавливаем пути к исходным файлам
 set(circle_src circle.cpp)
-set(main_src main.cpp)
+set(main_src main.cpp)  # Используем main.cpp
 
 # Создаём библиотеку
 add_library(${PROJECT_NAME}_lib STATIC
   ${circle_header}
   ${circle_src}
-  ${tasks_header})
+  ${tasks_header}
+  ${main_src})  # Добавляем main_src
 
 # Указываем директории для включения заголовочных файлов
 target_include_directories(${PROJECT_NAME}_lib
