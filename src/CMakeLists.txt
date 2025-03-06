@@ -1,30 +1,13 @@
-set(header_path "${${PROJECT_NAME}_SOURCE_DIR}/include")
-set(header ${header_path}/circle.h)
-set(src circle.cpp)
+cmake_minimum_required(VERSION 3.10)
+project(CircleProject)
 
-add_library(${PROJECT_NAME} SHARED
-  ${header}
-  ${src})
-  
-target_include_directories(${PROJECT_NAME}
-  PUBLIC ${CMAKE_CURRENT_BINARY_DIR}
-         ${${PROJECT_NAME}_SOURCE_DIR}/include)
-target_link_libraries(${PROJECT_NAME}
-  pthread)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(${PROJECT_NAME}.info main.cpp)
-target_include_directories(${PROJECT_NAME}.info
-  PUBLIC ${CMAKE_CURRENT_BINARY_DIR}
-         ${${PROJECT_NAME}_SOURCE_DIR}/include)
-target_link_libraries(${PROJECT_NAME}.info
-  ${PROJECT_NAME})
+include_directories(include)
 
+add_executable(CircleProject src/circle.cpp src/tasks.cpp test/tests.cpp)
 
-install(TARGETS ${PROJECT_NAME}
-        LIBRARY DESTINATION "${lib_dest}"
-    ARCHIVE DESTINATION "${lib_dest}"
-    COMPONENT library)
-install(TARGETS ${PROJECT_NAME}.info
-        RUNTIME DESTINATION "${tool_dest}"
-    COMPONENT library)
-install(FILES ${header} DESTINATION "${include_dest}")
+# Подключение Google Test
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+target_link_libraries(CircleProject ${GTEST_LIBRARIES} pthread)
