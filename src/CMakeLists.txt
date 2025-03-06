@@ -5,9 +5,18 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(include)
 
-add_executable(CircleProject src/circle.cpp src/tasks.cpp test/tests.cpp)
+# Укажите все исходные файлы
+set(SOURCES
+    src/circle.cpp
+    src/tasks.cpp
+    src/main.cpp
+    test/tests.cpp
+)
 
-# Подключение Google Test
+# Создайте исполняемый файл
+add_executable(CircleProject ${SOURCES})
+
+# Подключите Google Test
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 target_link_libraries(CircleProject ${GTEST_LIBRARIES} pthread)
