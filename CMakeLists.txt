@@ -1,13 +1,22 @@
-cmake_minimum_required (VERSION 3.10.2)
-project (ST-2)
+cmake_minimum_required(VERSION 3.10)
+project(CircleProject)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -g")
+set(CMAKE_CXX_STANDARD 14)
 
+include_directories(include)
 
-set(tool_dest "bin")
-set(lib_dest "lib")
-set(include_dest "include/")
+# Укажите все исходные файлы
+set(SOURCES
+    src/circle.cpp
+    src/tasks.cpp
+    src/main.cpp
+    test/tests.cpp
+)
 
-add_subdirectory(src)
-add_subdirectory(test)
+# Создайте исполняемый файл
+add_executable(CircleProject ${SOURCES})
+
+# Подключите Google Test
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+target_link_libraries(CircleProject ${GTEST_LIBRARIES} pthread)
