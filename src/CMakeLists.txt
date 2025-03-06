@@ -5,15 +5,13 @@ set(tasks_header ${header_path}/tasks.h)
 
 # Устанавливаем пути к исходным файлам
 set(circle_src circle.cpp)
-set(tasks_src tasks.cpp)
-set(main_src main.cpp)
+set(main_src main.cpp)  # Используем main.cpp вместо tasks.cpp
 
 # Создаём библиотеку
 add_library(${PROJECT_NAME}_lib STATIC
   ${circle_header}
   ${circle_src}
-  ${tasks_header}
-  ${tasks_src})
+  ${tasks_header})
 
 # Указываем директории для включения заголовочных файлов
 target_include_directories(${PROJECT_NAME}_lib
@@ -27,8 +25,3 @@ add_executable(${PROJECT_NAME}
 # Связываем исполняемый файл с библиотекой
 target_link_libraries(${PROJECT_NAME}
   PRIVATE ${PROJECT_NAME}_lib)
-
-# Подключаем Google Test (если тесты включены)
-if (BUILD_TESTS)
-  enable_testing()
-endif()
