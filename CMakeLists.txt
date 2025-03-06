@@ -8,8 +8,7 @@ include_directories(include)
 # Укажите все исходные файлы
 set(SOURCES
     src/circle.cpp
-    src/tasks.cpp
-    src/main.cpp
+    src/main.cpp  # Используем main.cpp вместо tasks.cpp
     test/tests.cpp
 )
 
