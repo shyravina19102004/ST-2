@@ -3,7 +3,6 @@
 
 #include <cstdint>
 #include <cmath>
-#include <cstdint>
 #include <stdexcept>
 
 Circle::Circle(double radius) : radius(radius) {
