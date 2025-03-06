@@ -1,5 +1,5 @@
 // Copyright 2022 UNN-CS
-#include <iostream> 
+#include <iostream>
 #include "tasks.h"
 #include "circle.h"
 

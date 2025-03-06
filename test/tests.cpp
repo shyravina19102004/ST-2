@@ -6,7 +6,7 @@
 #include "circle.h"
 #include "tasks.h"
 
-// Тесты для класса Circle
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Circle
 TEST(CircleTest, Initialization) {
     Circle c(5);
     EXPECT_NEAR(c.getRadius(), 5, 1e-6);
@@ -36,13 +36,13 @@ TEST(CircleTest, SetArea) {
     EXPECT_NEAR(c.getFerence(), 2 * M_PI * 10, 1e-6);
 }
 
-// Тесты для задачи "Земля и верёвка"
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ"
 TEST(EarthRopeTest, GapCalculation) {
     double gap = calculateEarthRopeGap();
     EXPECT_NEAR(gap, 0.159, 1e-3);
 }
 
-// Тесты для задачи "Бассейн"
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 TEST(PoolCostTest, CostCalculation) {
     double cost = calculatePoolCost();
     double expectedCost = 1000 * (M_PI * 16 - M_PI * 9) + 2000 * 2 * M_PI * 4;
