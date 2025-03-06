@@ -1,6 +1,9 @@
 # Устанавливаем пути к исходным файлам тестов
 set(tests_src tests.cpp)
 
+# Подключаем Google Test
+find_package(GTest REQUIRED)  # Убедитесь, что этот вызов присутствует
+
 # Создаём исполняемый файл для тестов
 add_executable(${PROJECT_NAME}_test
   ${tests_src})
